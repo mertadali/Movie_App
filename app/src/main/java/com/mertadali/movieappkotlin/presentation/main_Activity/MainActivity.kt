@@ -1,4 +1,4 @@
-package com.mertadali.movieappkotlin.presentation.theme
+package com.mertadali.movieappkotlin.presentation.main_Activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

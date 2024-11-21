@@ -1,5 +1,7 @@
 package com.mertadali.movieappkotlin.data.remote.dto
 
+import com.mertadali.movieappkotlin.domain.model.MovieDetail
+
 data class MovieDetailDTO(
     val Actors: String,
     val Awards: String,
@@ -27,3 +29,7 @@ data class MovieDetailDTO(
     val imdbRating: String,
     val imdbVotes: String
 )
+
+fun MovieDetailDTO.useMovieDetail() : MovieDetail{
+    return MovieDetail(Actors,Awards,Country,Director,Genre,Language,Poster,Rated,Released,Title,Type,Year, imdbRating)
+}

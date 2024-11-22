@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.flow.flow
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -24,6 +25,9 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MovieApi::class.java)
+
+
+
     }
 
     @Provides

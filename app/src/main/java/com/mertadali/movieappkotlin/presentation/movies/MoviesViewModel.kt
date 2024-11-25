@@ -6,14 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mertadali.movieappkotlin.domain.use_case.get_movies.GetMoviesUseCase
 import com.mertadali.movieappkotlin.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
+@HiltViewModel
 class MoviesViewModel @Inject constructor(private val getMoviesUseCase: GetMoviesUseCase) :ViewModel() {
 
-    private val _state = mutableStateOf<MoviesState>(value = MoviesState())
+    private val _state = mutableStateOf(value = MoviesState())
     val state  : State<MoviesState> = _state
 
     private var job : Job? = null

@@ -8,17 +8,15 @@ import com.mertadali.movieappkotlin.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okio.IOException
-import org.jetbrains.annotations.Async.Execute
-
 import javax.inject.Inject
 
 class GetMoviesUseCase @Inject constructor(private val repository: MovieRepository) {
-
+    //Use case -> only one major public function, one feature, single responsibility
     fun executeGetMovie(search : String) : Flow<Resource<List<Movie>>> = flow {
         try{
             emit(Resource.Loading())
             val movieList = repository.getMovies(search)
-            if (movieList.Response.equals("True")){
+            if (movieList.Response == "True"){
                 emit(Resource.Success(movieList.useMovieList()))
 
             }else{

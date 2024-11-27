@@ -31,17 +31,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideMovieRepository(api: MovieApi) : MovieRepository{
-        return MovieRepositoryImpl(api)
+        return MovieRepositoryImpl(api = api)
     }
-
-
-
-
-
-
-
-
-
 
 
 

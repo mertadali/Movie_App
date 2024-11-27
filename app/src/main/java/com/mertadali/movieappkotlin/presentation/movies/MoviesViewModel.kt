@@ -21,7 +21,7 @@ class MoviesViewModel @Inject constructor(private val getMoviesUseCase: GetMovie
     private var job : Job? = null
 
     init {
-        getMoviesFromUseCase(state.value.searching)
+        getMoviesFromUseCase(_state.value.searching)
     }
 
     private fun getMoviesFromUseCase(search : String){
@@ -38,8 +38,7 @@ class MoviesViewModel @Inject constructor(private val getMoviesUseCase: GetMovie
 
                 }
                 is Resource.Error->{
-                    _state.value = MoviesState(error = it.message?: "Error")
-
+                    _state.value = MoviesState(error = it.message ?: "Error")
                 }
             }
 

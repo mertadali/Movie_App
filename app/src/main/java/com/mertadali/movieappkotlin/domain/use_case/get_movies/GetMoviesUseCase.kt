@@ -18,7 +18,6 @@ class GetMoviesUseCase @Inject constructor(private val repository: MovieReposito
             val movieList = repository.getMovies(search)
             if (movieList.Response == "True"){
                 emit(Resource.Success(movieList.useMovieList()))
-
             }else{
                 emit(Resource.Error(message = "No valid data"))
             }
@@ -29,6 +28,5 @@ class GetMoviesUseCase @Inject constructor(private val repository: MovieReposito
             emit(Resource.Error(message = e.localizedMessage ?: "Error"))
         }
     }
-
 
 }

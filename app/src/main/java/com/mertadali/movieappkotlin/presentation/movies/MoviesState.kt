@@ -6,7 +6,7 @@ data class MoviesState(
     val isLoading : Boolean = false,
     val movieList : List<Movie> = emptyList(),
     val error  : String = "",
-    val searching : String = "batman"                    // kullanıcının etkişeleşime geçeceği yer -> Event
+    val searching : String = "pulp"                    // kullanıcının etkişeleşime geçeceği yer -> Event
 )
 
 

@@ -40,7 +40,7 @@ fun MovieScreen(
         .fillMaxSize()
         .background(Color.Black)){
         Column {
-            MovieSearchBar(modifier = Modifier.fillMaxWidth() ,hint ="batman", onSearch = {
+            MovieSearchBar(modifier = Modifier.fillMaxWidth() ,hint ="Search Film", onSearch = {
                 viewModel.onEvent(MoviesEvent.Search(it))
             } )
 
@@ -65,8 +65,11 @@ fun MovieScreen(
             mutableStateOf(hint != "")
         }
 
-        Box(modifier = modifier){
-            TextField(value = text , keyboardActions = KeyboardActions(onDone = { onSearch(text) }) , onValueChange = { text = it },
+        Box(modifier = modifier) {
+            TextField(value = text,
+                onValueChange = { text = it },
+                keyboardActions = KeyboardActions(onDone = { onSearch(text) }),
+
                 maxLines = 1,
                 singleLine = true,
                 textStyle = TextStyle(color = Color.Black),
@@ -80,15 +83,19 @@ fun MovieScreen(
                     .onFocusChanged {
                         // kullanıcı tıkladıysa hint gözükmesin istiyoruz
                         isHintDisplayed = it.isFocused != true && text.isEmpty()
+                        println(isHintDisplayed)
                     })
 
 
-        if (isHintDisplayed){
-            Text(text = hint, color = Color.LightGray, modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp))
-            println(isHintDisplayed)
+            if (isHintDisplayed) {
+                Text(
+                    text = hint,
+                    color = Color.LightGray,
+                    modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp)
+                )
+                println(isHintDisplayed)
+            }
         }
-    }
-
     }
 
 

@@ -13,6 +13,4 @@ class MovieRepositoryImpl @Inject constructor(private val api : MovieApi) : Movi
     override suspend fun getMoviesDetail(imdbId: String): MovieDetailDTO {
         return api.getMoviesDetail(imdbId)
     }
-
-
 }

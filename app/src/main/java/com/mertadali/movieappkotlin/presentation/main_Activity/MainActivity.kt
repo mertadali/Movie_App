@@ -12,8 +12,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.mertadali.movieappkotlin.presentation.Screen
+import com.mertadali.movieappkotlin.presentation.movie_details.views.MovieDetailScreen
 import com.mertadali.movieappkotlin.presentation.movies.views.MovieScreen
 import com.mertadali.movieappkotlin.presentation.theme.ui.MovieAppKotlinTheme
+import com.mertadali.movieappkotlin.util.Constants.IMDB_ID
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,7 +34,11 @@ class MainActivity : ComponentActivity() {
                         composable(route =Screen.MovieScreen.route){
                             MovieScreen(navController = navController)
                         }
-                        composable(route =Screen.MovieDetailScreen.route){
+                        composable(route =Screen.MovieDetailScreen.route+ "/{${IMDB_ID}}"){
+                            MovieDetailScreen(onBackPressed = {
+                                navController.popBackStack()
+                            })
+
                         }
                     }
                 }

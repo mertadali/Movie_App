@@ -21,6 +21,4 @@ class GetMovieDetailUseCase @Inject constructor(private val repository :MovieRep
 
         }
     }
-
-
 }

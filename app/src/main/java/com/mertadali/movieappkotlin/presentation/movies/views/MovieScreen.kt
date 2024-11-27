@@ -24,10 +24,11 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.mertadali.movieappkotlin.presentation.MovieListRow
+import com.mertadali.movieappkotlin.presentation.Screen
 import com.mertadali.movieappkotlin.presentation.movies.MoviesEvent
 import com.mertadali.movieappkotlin.presentation.movies.MoviesViewModel
 
@@ -46,7 +47,9 @@ fun MovieScreen(
 
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(state.movieList){ movie ->
-                    Text(text = movie.Title, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, color = Color.White)
+                  MovieListRow(movie = movie, onItemClick = {
+                      navController.navigate(route = Screen.MovieDetailScreen.route+"/${movie.imdbID}")
+                  })
                 }
             }
         }
@@ -79,7 +82,7 @@ fun MovieScreen(
                     .fillMaxWidth()
                     .shadow(5.dp, CircleShape)
                     .background(color = Color.White, CircleShape)
-                    .padding(20.dp)
+                    .padding(horizontal = 20.dp)
                     .onFocusChanged {
                         // kullanıcı tıkladıysa hint gözükmesin istiyoruz
                         isHintDisplayed = it.isFocused != true && text.isEmpty()
